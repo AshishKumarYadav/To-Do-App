@@ -15,7 +15,7 @@ import com.ashish.todolist.adapter.RecyclerAdapter
 import com.ashish.todolist.databinding.ActivityMainBinding
 import com.ashish.todolist.viewmodel.NoteViewModal
 
-class MainActivity : AppCompatActivity(), View.OnClickListener,RecyclerAdapter.NoteCheckedInterface {
+class MainActivity : AppCompatActivity(), View.OnClickListener,RecyclerAdapter.NoteCheckedInterface,RecyclerAdapter.DeleteNotes {
 
     private lateinit var binding: ActivityMainBinding
     lateinit var myAdapter: RecyclerAdapter
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,RecyclerAdapter.N
     }
 
     private fun initView() {
-        myAdapter = RecyclerAdapter(this,this)
+        myAdapter = RecyclerAdapter(this,this,this)
 
         setRecyclerView()
 
@@ -83,6 +83,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,RecyclerAdapter.N
 
     override fun itemChecked(note: Notes) {
        viewModal.updateNote(note)
+    }
+
+    override fun deleteNote(note: Notes) {
+        viewModal.deleteNote(note)
     }
 
 }

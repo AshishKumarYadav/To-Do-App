@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ashish.todolist.Notes
 import com.ashish.todolist.R
 
-class RecyclerAdapter(context: Context,val notesCheckedInterface: NoteCheckedInterface
+class RecyclerAdapter(context: Context,val notesCheckedInterface: NoteCheckedInterface,val deleteNote:DeleteNotes
 ): RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>(){
 
     private val allNotes = ArrayList<Notes>()
@@ -20,6 +21,8 @@ class RecyclerAdapter(context: Context,val notesCheckedInterface: NoteCheckedInt
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             val checkBox:CheckBox =  itemView.findViewById(R.id.itemCheckbox)
             val timeText:TextView =  itemView.findViewById(R.id.timeText)
+            val tvText:TextView =  itemView.findViewById(R.id.tvText)
+            val deleteBtn:ImageButton =  itemView.findViewById(R.id.delete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -33,20 +36,30 @@ class RecyclerAdapter(context: Context,val notesCheckedInterface: NoteCheckedInt
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.checkBox.text = allNotes.get(position).notes
+        holder.tvText.text = allNotes.get(position).notes
 
         holder.timeText.text = "8:00 AM"
-        Log.d("ADAPTER ","val "+allNotes.get(position).isChecked)
+        Log.d("TODO ","Adapter "+allNotes.get(position).isChecked)
         if (allNotes.get(position).isChecked) {
 
-//            holder.checkBox.setPaintFlags(holder.checkBox.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
-
+            holder.tvText.setPaintFlags(holder.tvText.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
             holder.checkBox.isChecked = true
+            holder.deleteBtn.visibility = View.VISIBLE
+
+
+        } else {
+
+            holder.tvText.setPaintFlags(holder.tvText.getPaintFlags() and Paint.STRIKE_THRU_TEXT_FLAG.inv())
+            holder.deleteBtn.visibility = View.INVISIBLE
         }
+
         holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             allNotes[position].isChecked = isChecked
-            val note = Notes( allNotes[position].notes,"09:00 AM",isChecked)
-            notesCheckedInterface.itemChecked(note)
+            notesCheckedInterface.itemChecked(allNotes[position])
+        }
+
+        holder.deleteBtn.setOnClickListener {
+            deleteNote.deleteNote(allNotes[position])
         }
     }
     // below method is use to update our list of notes.
@@ -63,5 +76,8 @@ class RecyclerAdapter(context: Context,val notesCheckedInterface: NoteCheckedInt
     }
     interface NoteCheckedInterface{
         fun itemChecked(note:Notes)
+    }
+    interface DeleteNotes{
+        fun deleteNote(note:Notes)
     }
 }
