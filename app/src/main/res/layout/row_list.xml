@@ -2,30 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         >
 
         <CheckBox
             android:id="@+id/itemCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="checkbox text"
             />
-
         <TextView
-            android:id="@+id/timeText"
+            android:id="@+id/tvText"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:textSize="18dp"
+            android:gravity="start"
+            android:padding="8dp"
+            android:text="Gym"/>
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
             android:gravity="center"
+            android:textColor="@color/yellow"
             android:text="8:00 AM"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:id="@+id/delete"
+            android:src="@drawable/baseline_delete"
+            android:backgroundTint="@color/transparent"
+            />
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.ashish.todolist.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -17,12 +18,14 @@ class NoteViewModal (application: Application) :AndroidViewModel(application) {
     val allNotes : LiveData<List<Notes>>
     val repository : NoteRepository
 
+
     // on below line we are initializing
     // our dao, repository and all notes
     init {
         val dao = NoteDatabase.getDatabase(application).getNotesDao()
         repository = NoteRepository(dao)
         allNotes = repository.allNotes
+        Log.d("TODO ","NotesViewModel "+allNotes.value.toString())
     }
 
     // on below line we are creating a new method for deleting a note. In this we are
@@ -34,6 +37,7 @@ class NoteViewModal (application: Application) :AndroidViewModel(application) {
     // on below line we are creating a new method for updating a note. In this we are
     // calling a update method from our repository to update our note.
     fun updateNote(note: Notes) = viewModelScope.launch(Dispatchers.IO) {
+        Log.d("TODO ","NotesViewModel1 "+note)
         repository.update(note)
     }
 
