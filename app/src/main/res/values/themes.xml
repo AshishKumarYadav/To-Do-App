@@ -13,7 +13,7 @@
         <item name="colorSecondary">@color/navy_blue</item>
         <item name="colorSecondaryVariant">@color/royal_blue</item>
 
-        <item name="colorOnSecondary">@color/progressbar</item>
+        <item name="colorOnSecondary">@color/yellow</item>
         <item name="android:textColor">@color/dark_navy_blue</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>

@@ -3,6 +3,7 @@ package com.ashish.todolist
 
 import androidx.lifecycle.LiveData
 import com.ashish.todolist.Notes
+import com.ashish.todolist.NotesDao
 
 class NoteRepository(val notesDao: NotesDao) {
 

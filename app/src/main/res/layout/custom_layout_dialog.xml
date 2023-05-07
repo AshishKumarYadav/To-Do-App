@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter note here"
+        android:capitalize="sentences"
+        android:id="@+id/notes"/>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       >
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/timeView"
+           android:text="Select time"
+           android:textAllCaps="false"
+           android:layout_marginStart="20dp"
+           android:layout_alignParentStart="true"
+           android:backgroundTint="@color/white"
+           android:textColor="@color/black"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/dateView"
+           android:text="Select date"
+           android:textAllCaps="false"
+           android:layout_marginRight="20dp"
+           android:layout_alignParentRight="true"
+           android:backgroundTint="@color/white"
+           android:textColor="@color/black"/>
+
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="20dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_btn"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_btn"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+</LinearLayout>
